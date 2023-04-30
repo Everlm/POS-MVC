@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>POS_MVC.ApplicationWeb</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\POS-MVC.BLL\POS-MVC.BLL.csproj" />
+    <ProjectReference Include="..\POS-MVC.Entity\POS-MVC.Entity.csproj" />
+    <ProjectReference Include="..\POS-MVC.IOC\POS-MVC.IOC.csproj" />
+  </ItemGroup>
+
+</Project>

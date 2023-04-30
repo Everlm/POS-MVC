@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>POS_MVC.IOC</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\POS-MVC.BLL\POS-MVC.BLL.csproj" />
+    <ProjectReference Include="..\POS-MVC.DAL\POS-MVC.DAL.csproj" />
+  </ItemGroup>
+
+</Project>
