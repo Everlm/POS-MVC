@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\POS-MVC.BLL\POS-MVC.BLL.csproj" />
     <ProjectReference Include="..\POS-MVC.Entity\POS-MVC.Entity.csproj" />
     <ProjectReference Include="..\POS-MVC.IOC\POS-MVC.IOC.csproj" />
