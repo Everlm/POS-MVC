@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using POS_MVC.DAL.DBContext;
+using POS_MVC.DAL.Implementation;
+using POS_MVC.DAL.Interfaces;
 
 namespace POS_MVC.IOC.Dependency
 {
@@ -14,6 +16,8 @@ namespace POS_MVC.IOC.Dependency
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddTransient(typeof(IGenericRepository<>, typeof(GenericRepository<>));
+            services.AddScoped<ISaleRepository, SaleRepository>();
         }
     }
 }
