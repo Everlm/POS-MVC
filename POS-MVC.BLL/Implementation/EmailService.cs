@@ -19,7 +19,7 @@ namespace POS_MVC.BLL.Implementation
         {
             try
             {
-                IQueryable<Configuration> query = await _configurationRepository.GetAllAsync(c => c.Resource.Equals("Email_Service"));
+                IQueryable<Configuration> query = await _configurationRepository.SearchAsync(c => c.Resource.Equals("Email_Service"));
 
                 Dictionary<string, string> Config = query.ToDictionary(keySelector: c => c.Property, elementSelector: c => c.Value);
 

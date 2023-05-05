@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
+    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\POS-MVC.DAL\POS-MVC.DAL.csproj" />
     <ProjectReference Include="..\POS-MVC.Entity\POS-MVC.Entity.csproj" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using POS_MVC.BLL.Implementation;
 using POS_MVC.BLL.Interfaces;
 using POS_MVC.DAL.DBContext;
 using POS_MVC.DAL.Implementation;
@@ -19,7 +20,8 @@ namespace POS_MVC.IOC.Dependency
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ISaleRepository, SaleRepository>();
-            services.AddScoped<IEmailService, IEmailService>();
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IFireBaseService, FireBaseService>();
         }
     }
 }

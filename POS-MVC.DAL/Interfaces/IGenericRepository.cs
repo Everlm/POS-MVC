@@ -8,7 +8,7 @@ namespace POS_MVC.DAL.Interfaces
         Task<TEntity> CreateAsync(TEntity entity);
         Task<bool> UpdateAsync(TEntity entity);
         Task<bool> DeleteAsync(TEntity entity);
-        Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null!);
+        Task<IQueryable<TEntity>> SearchAsync(Expression<Func<TEntity, bool>> filter = null!);
     }
 
 }

@@ -72,7 +72,7 @@ namespace POS_MVC.DAL.Implementation
 
         }
 
-        public async Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null)
+        public async Task<IQueryable<TEntity>> SearchAsync(Expression<Func<TEntity, bool>> filter = null)
         {
             IQueryable<TEntity> queryEntity = filter == null ? _dbContext.Set<TEntity>() : _dbContext.Set<TEntity>().Where(filter);
             return queryEntity.AsQueryable();
