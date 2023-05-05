@@ -22,6 +22,9 @@ namespace POS_MVC.IOC.Dependency
             services.AddScoped<ISaleRepository, SaleRepository>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IFireBaseService, FireBaseService>();
+            services.AddScoped<IUtilitiesService, UtilitiesService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }
