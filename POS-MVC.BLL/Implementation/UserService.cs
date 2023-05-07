@@ -11,10 +11,10 @@ namespace POS_MVC.BLL.Implementation
     {
         private readonly IGenericRepository<User> _genericRepository;
         private readonly IFireBaseService _fireBaseService;
-        private readonly UtilitiesService _UtilitiesService;
+        private readonly IUtilitiesService _UtilitiesService;
         private readonly IEmailService _emailService;
 
-        public UserService(IGenericRepository<User> genericRepository, IFireBaseService fireBaseService, UtilitiesService utilitiesService, IEmailService emailService)
+        public UserService(IGenericRepository<User> genericRepository, IFireBaseService fireBaseService, IUtilitiesService utilitiesService, IEmailService emailService)
         {
             _genericRepository = genericRepository;
             _fireBaseService = fireBaseService;
