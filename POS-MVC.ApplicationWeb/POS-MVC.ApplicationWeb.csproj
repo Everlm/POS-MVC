@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -18,5 +18,5 @@
     <ProjectReference Include="..\POS-MVC.Entity\POS-MVC.Entity.csproj" />
     <ProjectReference Include="..\POS-MVC.IOC\POS-MVC.IOC.csproj" />
   </ItemGroup>
-
+   
 </Project>

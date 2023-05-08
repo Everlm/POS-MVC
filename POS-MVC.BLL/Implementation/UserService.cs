@@ -27,6 +27,7 @@ namespace POS_MVC.BLL.Implementation
             IQueryable<User> query = await _genericRepository.SearchAsync();
             return await query.Include(r => r.Role).ToListAsync();
         }
+
         public async Task<User> GetByIdAsync(int id)
         {
             IQueryable<User> query = await _genericRepository.SearchAsync(u => u.UserId == id);
@@ -34,6 +35,7 @@ namespace POS_MVC.BLL.Implementation
 
             return result;
         }
+
         public async Task<User> GetByCredentialsAsync(string email, string password)
         {
             string passwordEncrypted = _UtilitiesService.ConverterSha256(password);
@@ -41,6 +43,7 @@ namespace POS_MVC.BLL.Implementation
 
             return userFound;
         }
+
         public async Task<User> CreateAsync(User entity, Stream Photo = null, string NamePhoto = "", string TemplateEmailUrl = "")
         {
             User userExist = await _genericRepository.GetAsync(u => u.Email == entity.Email);
@@ -62,15 +65,16 @@ namespace POS_MVC.BLL.Implementation
                     entity.PhotoUrl = photoUrl;
                 }
 
-                User createdUSer = await _genericRepository.CreateAsync(entity);
-                if (createdUSer.UserId == 0)
+                User userCreated = await _genericRepository.CreateAsync(entity);
+
+                if (userCreated.UserId == 0)
                 {
                     throw new TaskCanceledException("Error creating user");
                 }
 
                 if (TemplateEmailUrl != "")
                 {
-                    TemplateEmailUrl = TemplateEmailUrl.Replace("[email]", createdUSer.Email).Replace("[password]", generatedPassword);
+                    TemplateEmailUrl = TemplateEmailUrl.Replace("[email]", userCreated.Email).Replace("[password]", generatedPassword);
 
                     string emailHtml = "";
 
@@ -100,21 +104,22 @@ namespace POS_MVC.BLL.Implementation
 
                     if (emailHtml != "")
                     {
-                        await _emailService.SendEmailAsync(createdUSer.Email, "Account Created", emailHtml);
+                        await _emailService.SendEmailAsync(userCreated.Email, "Account Created", emailHtml);
                     }
 
                 }
 
-                IQueryable<User> query = await _genericRepository.SearchAsync(u => u.UserId == createdUSer.UserId);
-                createdUSer = query.Include(r => r.Role).First();
+                IQueryable<User> query = await _genericRepository.SearchAsync(u => u.UserId == userCreated.UserId);
+                userCreated = query.Include(r => r.Role).First();
 
-                return createdUSer;
+                return userCreated;
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error in CreateUser, {ex.Message}");
             }
         }
+
         public async Task<bool> SaveProfileAsync(User entity)
         {
             try
@@ -137,6 +142,7 @@ namespace POS_MVC.BLL.Implementation
                 throw new Exception($"Error in SaveProfileUser, {ex.Message}");
             }
         }
+
         public async Task<User> EditAsync(User entity, Stream Photo = null, string NamePhoto = "")
         {
             User userExist = await _genericRepository.GetAsync(u => u.Email == entity.Email && u.UserId != entity.UserId);
@@ -155,6 +161,7 @@ namespace POS_MVC.BLL.Implementation
                 userEdit.Email = entity.Email;
                 userEdit.Phone = entity.Phone;
                 userEdit.RoleId = entity.RoleId;
+                userEdit.IsActive = entity.IsActive;
 
                 if (userEdit.PhotoName == "")
                 {
@@ -182,6 +189,7 @@ namespace POS_MVC.BLL.Implementation
                 throw new Exception($"Error in UpdateUser, {ex.Message}");
             }
         }
+
         public async Task<bool> DeleteAsync(int id)
         {
             try
@@ -208,6 +216,7 @@ namespace POS_MVC.BLL.Implementation
                 throw new Exception($"Error in DeleteUser, {ex.Message}");
             }
         }
+
         public async Task<bool> ChangePasswordAsync(int id, string CurrentPassword, string NewPassword)
         {
             try
@@ -235,6 +244,7 @@ namespace POS_MVC.BLL.Implementation
                 throw new Exception($"Error in ChangePasswordUser, {ex.Message}");
             }
         }
+
         public async Task<bool> ResetPasswordAsync(string email, string TemplateEmailUrl)
         {
             try

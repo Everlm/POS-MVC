@@ -7,9 +7,9 @@
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public int? RoleId { get; set; }
-        public string? PhotoUrl { get; set; }
         public string? Role { get; set; }
         public int? IsActive { get; set; }
+        public string? PhotoUrl { get; set; }
 
     }
 }
