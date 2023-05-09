@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace POS_MVC.Entity
+﻿namespace POS_MVC.Entity
 {
     public partial class Business
     {

@@ -101,6 +101,7 @@ $("#btnNuevo").click(function () {
 
 //Save User
 $("#btnGuardar").click(function () {
+
     const inputs = $("input.input-validar").serializeArray();
     const inputsOutValue = inputs.filter((item) => item.value.trim() == "")
     if (inputsOutValue.length > 0) {
