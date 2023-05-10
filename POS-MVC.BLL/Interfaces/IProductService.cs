@@ -6,7 +6,7 @@ namespace POS_MVC.BLL.Interfaces
     {
         Task<List<Product>> ListProducts();
         Task<Product> CreateProduct(Product entity, Stream image = null, string nameImage = "");
-        Task<Product> UpdateProduct(Product entity, Stream image = null);
+        Task<Product> UpdateProduct(Product entity, Stream image = null, string nameImage = "");
         Task<bool> DeleteProduct(int productId);
     }
 }

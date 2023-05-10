@@ -80,14 +80,18 @@ namespace POS_MVC.ApplicationWeb.Controllers
             {
                 ProductViewModel productViewModel = JsonConvert.DeserializeObject<ProductViewModel>(productModel);
 
+                string nameImage = "";
                 Stream streamImage = null;
 
                 if (image != null)
                 {
+                    string nameCode = Guid.NewGuid().ToString("N");
+                    string imageExtension = Path.GetExtension(image.FileName);
+                    nameImage = string.Concat(nameCode, imageExtension);
                     streamImage = image.OpenReadStream();
                 }
 
-                Product productUpdated = await _productService.UpdateProduct(_mapper.Map<Product>(productViewModel), streamImage);
+                Product productUpdated = await _productService.UpdateProduct(_mapper.Map<Product>(productViewModel), streamImage, nameImage);
 
                 productViewModel = _mapper.Map<ProductViewModel>(productUpdated);
 

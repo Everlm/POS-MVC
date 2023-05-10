@@ -10,7 +10,7 @@
 
 let tableData;
 
-//List Users
+
 $(document).ready(function () {
 
     fetch("/User/ListRoles")
@@ -80,7 +80,7 @@ $(document).ready(function () {
     });
 })
 
-//Modal User
+
 function showModal(model = UserModel) {
     $("#txtId").val(model.userId)
     $("#txtNombre").val(model.name)
@@ -99,7 +99,7 @@ $("#btnNuevo").click(function () {
     showModal()
 })
 
-//Save User
+
 $("#btnGuardar").click(function () {
 
     const inputs = $("input.input-validar").serializeArray();
@@ -170,7 +170,7 @@ $("#btnGuardar").click(function () {
 })
 
 
-//Edit User
+
 let selectedFill;
 $("#tbdata tbody").on("click", ".btn-editar", function () {
     if ($(this).closest("tr").hasClass("child")) {
@@ -186,7 +186,7 @@ $("#tbdata tbody").on("click", ".btn-editar", function () {
 })
 
 
-//Delete User
+
 $("#tbdata tbody").on("click", ".btn-eliminar", function () {
     let fill;
     if ($(this).closest("tr").hasClass("child")) {

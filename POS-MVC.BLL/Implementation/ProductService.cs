@@ -59,7 +59,7 @@ namespace POS_MVC.BLL.Implementation
             }
         }
 
-        public async Task<Product> UpdateProduct(Product entity, Stream image = null)
+        public async Task<Product> UpdateProduct(Product entity, Stream image = null, string nameImage = "")
         {
             Product productFound = await _repository.GetAsync(p => p.BarCode == entity.BarCode && p.ProductId != entity.ProductId);
 
@@ -80,6 +80,11 @@ namespace POS_MVC.BLL.Implementation
                 product.Stock = entity.Stock;
                 product.Price = entity.Price;
                 product.IsActive = entity.IsActive;
+
+                if (product.ImageName == "")
+                {
+                    product.ImageName = nameImage;
+                }
 
                 if (image != null)
                 {

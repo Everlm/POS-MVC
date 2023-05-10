@@ -16,7 +16,7 @@ namespace POS_MVC.ApplicationWeb.Utilities.Mappers
 
             CreateMap<ProductViewModel, Product>()
                  .ForMember(x => x.IsActive, x => x.MapFrom(x => x.IsActive == 1 ? true : false))
-                 .ForMember(x => x.CategoryId, x => x.Ignore())
+                 .ForMember(x => x.Category, x => x.Ignore())
                  .ForMember(x => x.Price, x => x.MapFrom(x => Convert.ToDecimal(x.Price, new CultureInfo("es-CO"))));
         }
     }
