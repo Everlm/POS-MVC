@@ -1,4 +1,5 @@
 ﻿
+//Get Data
 $(document).ready(function () {
 
     $(".card-body").LoadingOverlay("show");
@@ -12,14 +13,14 @@ $(document).ready(function () {
             if (responseJson.state) {
                 const b = responseJson.object
 
-                $("txtNumeroDocumento").val(b.documentNumber)
-                $("txtRazonSocial").val(b.name)
-                $("txtCorreo").val(b.email)
-                $("txtDireccion").val(b.address)
-                $("txTelefono").val(b.phone)
-                $("txtImpuesto").val(b.taxRate)
-                $("txtSimboloMoneda").val(b.currencySymbol)
-                $("txtLogo").attr("src", b.logoUrl)
+                $("#txtNumeroDocumento").val(b.documentNumber)
+                $("#txtRazonSocial").val(b.name)
+                $("#txtCorreo").val(b.email)
+                $("#txtDireccion").val(b.address)
+                $("#txTelefono").val(b.phone)
+                $("#txtImpuesto").val(b.taxRate)
+                $("#txtSimboloMoneda").val(b.currencySymbol)
+                $("#imgLogo").attr("src", b.logoUrl)
 
             } else {
                 swal("Error", responseJson.message, "error")
@@ -41,13 +42,14 @@ $("#btnGuardarCambios").click(function () {
     }
 
     const model = {
-        documentNumber: $("txtNumeroDocumento").val(),
-        name: $("txtRazonSocial").val(),
-        email: $("txtCorreo").val(),
-        address: $("txtDireccion").val(),
-        phone: $("txTelefono").val(),
-        taxRate: $("txtImpuesto").val(),
-        currencySymbol: $("txtSimboloMoneda").val()
+        documentNumber: $("#txtNumeroDocumento").val(),
+        name: $("#txtRazonSocial").val(),
+        email: $("#txtCorreo").val(),
+        address: $("#txtDireccion").val(),
+        phone: $("#txTelefono").val(),
+        taxRate: $("#txtImpuesto").val(),
+        currencySymbol: $("#txtSimboloMoneda").val()
+
 
     }
 
