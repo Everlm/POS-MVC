@@ -28,6 +28,8 @@ namespace POS_MVC.IOC.Dependency
             services.AddScoped<IBusinessService, BusinessService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ISaleDocumentTypeService, SaleDocumentTypeService>();
+            services.AddScoped<ISaleService, SaleService>();
         }
     }
 }

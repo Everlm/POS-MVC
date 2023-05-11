@@ -2,11 +2,6 @@
 using POS_MVC.DAL.DBContext;
 using POS_MVC.DAL.Interfaces;
 using POS_MVC.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POS_MVC.DAL.Implementation
 {
@@ -69,7 +64,7 @@ namespace POS_MVC.DAL.Implementation
         {
             List<SaleDetail> resumeList = await _context.SaleDetails
                  .Include(s => s.Sale)
-                 .ThenInclude(u => u.UserId)
+                 .ThenInclude(u => u.User)
                  .Include(s => s.Sale)
                  .ThenInclude(ds => ds.SalesDocumentType)
                  .Where(sd => sd.Sale.CreationDate.Value.Date >= startDate.Date &&
