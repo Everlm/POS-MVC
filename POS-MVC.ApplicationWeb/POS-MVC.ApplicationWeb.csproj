@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
   </ItemGroup>
 
@@ -17,6 +18,18 @@
     <ProjectReference Include="..\POS-MVC.BLL\POS-MVC.BLL.csproj" />
     <ProjectReference Include="..\POS-MVC.Entity\POS-MVC.Entity.csproj" />
     <ProjectReference Include="..\POS-MVC.IOC\POS-MVC.IOC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Utilities\PDFLibrary\libwkhtmltox.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Utilities\PDFLibrary\libwkhtmltox.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Utilities\PDFLibrary\libwkhtmltox.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
    
 </Project>

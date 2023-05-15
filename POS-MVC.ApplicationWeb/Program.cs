@@ -1,5 +1,9 @@
 using POS_MVC.IOC.Dependency;
 using System.Reflection;
+using POS_MVC.ApplicationWeb.Utilities.Extensions;
+using DinkToPdf;
+using DinkToPdf.Contracts;
+using System.Drawing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.DependencyInjection(builder.Configuration);
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+var contextPDF = new CustomAssemblyLoadContext();
+contextPDF.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "Utilities/PDFLibrary/libwkhtmltox.dll"));
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 
 var app = builder.Build();
