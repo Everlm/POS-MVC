@@ -30,6 +30,7 @@ namespace POS_MVC.IOC.Dependency
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ISaleDocumentTypeService, SaleDocumentTypeService>();
             services.AddScoped<ISaleService, SaleService>();
+            services.AddScoped<IDashBoardService, DashBoardService>();
         }
     }
 }
