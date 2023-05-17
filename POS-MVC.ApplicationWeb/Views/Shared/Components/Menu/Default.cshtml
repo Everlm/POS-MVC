@@ -1,0 +1,44 @@
+﻿@using POS_MVC.ApplicationWeb.ViewModels;
+@model List<MenuViewModel>;
+
+@{
+    string menucollapse = "menucollapse";
+    int correlativo = 1;
+}
+
+
+@foreach (var menu in Model)
+{
+    if (menu.InverseParentMenu.Count == 0)
+    {
+        <li class="nav-item">
+            <a class="nav-link" href="@($"/{menu.Controller}/{menu.PageAction}")">
+                <i class="@menu.Icon"></i>
+                <span>@menu.Description</span>
+            </a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="@($"#{menucollapse}{correlativo}")">
+                <i class="@menu.Icon"></i>
+                <span>@menu.Description</span>
+            </a>
+
+            <div id="@($"{menucollapse}{correlativo}")" class="collapse" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @foreach (var submenu in menu.InverseParentMenu)
+                    {
+                        <a class="collapse-item" href="@($"/{submenu.Controller}/{submenu.PageAction}")">
+                            @submenu.Description
+                        </a>
+                    }
+                </div>
+            </div>
+
+        </li>
+    
+        correlativo = correlativo + 1;
+    }
+}
