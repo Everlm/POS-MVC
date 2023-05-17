@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
 using DinkToPdf;
 using DinkToPdf.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POS_MVC.ApplicationWeb.Utilities.Response;
 using POS_MVC.ApplicationWeb.ViewModels;
 using POS_MVC.BLL.Interfaces;
 using POS_MVC.Entity;
+using System.Security.Claims;
 
 namespace POS_MVC.ApplicationWeb.Controllers
 {
+    [Authorize]
     public class SaleController : Controller
     {
         private readonly IMapper _mapper;
@@ -59,7 +62,13 @@ namespace POS_MVC.ApplicationWeb.Controllers
 
             try
             {
-                model.UserId = 3;
+                ClaimsPrincipal claimsUser = HttpContext.User;
+
+                string? userId = claimsUser.Claims
+                    .Where(c => c.Type == ClaimTypes.NameIdentifier)
+                    .Select(c => c.Value).SingleOrDefault();
+
+                model.UserId = int.Parse(userId);
 
                 Sale saleCreated = await _saleService.CreateSale(_mapper.Map<Sale>(model));
                 model = _mapper.Map<SaleViewModel>(saleCreated);

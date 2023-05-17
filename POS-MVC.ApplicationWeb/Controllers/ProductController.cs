@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using POS_MVC.ApplicationWeb.Utilities.Response;
@@ -9,6 +10,7 @@ using POS_MVC.Entity;
 
 namespace POS_MVC.ApplicationWeb.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IMapper _mapper;

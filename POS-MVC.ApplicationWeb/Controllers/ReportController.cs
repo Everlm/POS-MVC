@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using POS_MVC.ApplicationWeb.ViewModels;
 using POS_MVC.BLL.Interfaces;
 
 namespace POS_MVC.ApplicationWeb.Controllers
 {
+    [Authorize]
     public class ReportController : Controller
     {
         private readonly IMapper _mapper;
