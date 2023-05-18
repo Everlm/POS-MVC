@@ -26,7 +26,7 @@ namespace POS_MVC.BLL.Implementation
             IQueryable<Menu> parentMenu = (from u in user
                                            join rm in roleMenu on u.RoleId equals rm.RoleId
                                            join m in menu on rm.MenuId equals m.MenuId
-                                           join parentm in menu on m.MenuId equals parentm.MenuId
+                                           join parentm in menu on m.ParentMenuId equals parentm.MenuId
                                            select parentm).Distinct().AsQueryable();
 
             IQueryable<Menu> childsMenu = (from u in user
